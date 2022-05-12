@@ -1,0 +1,14 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: demo
+
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://yeojindb.cwgofftlsnoq.ap-northeast-2.rds.amazonaws.com/yeojinDB
+    username: admin
+    password: yeo3420211!
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
+    # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
