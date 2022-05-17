@@ -1,9 +1,9 @@
 package com.example.demo.src.user;
 
 
-import com.example.demo.src.user.model.GetUserRes;
-import com.example.demo.src.user.model.PatchUserReq;
-import com.example.demo.src.user.model.PostUserReq;
+import com.example.demo.src.user.model.*;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -82,9 +82,15 @@ public class UserDao {
         String modifyUserNameQuery = "update User set nickName = ? where userIdx = ? ";
         Object[] modifyUserNameParams = new Object[]{patchUserReq.getNickName(), patchUserReq.getUserIdx()};
 
-        return this.jdbcTemplate.update(modifyUserNameQuery,modifyUserNameParams);
+        return this.jdbcTemplate.update(modifyUserNameQuery, modifyUserNameParams);
     }
 
+    public DeleteUserRes deleteUser(DeleteUserReq deleteUserReq) {
+        String deleteUserByIdxQuery = "delete from User where userIdx = ?";
+        this.jdbcTemplate.update(deleteUserByIdxQuery, deleteUserReq.getUserIdx());
+
+        return new DeleteUserRes(deleteUserReq.getUserIdx());
+    }
 
 
 

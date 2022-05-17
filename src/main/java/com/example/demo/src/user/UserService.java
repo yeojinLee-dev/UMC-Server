@@ -3,9 +3,7 @@ package com.example.demo.src.user;
 
 import com.example.demo.config.BaseException;
 
-import com.example.demo.src.user.model.PatchUserReq;
-import com.example.demo.src.user.model.PostUserReq;
-import com.example.demo.src.user.model.PostUserRes;
+import com.example.demo.src.user.model.*;
 import com.example.demo.utils.JwtService;
 import com.example.demo.utils.SHA256;
 import org.slf4j.Logger;
@@ -32,7 +30,6 @@ public class UserService {
         this.jwtService = jwtService;
 
     }
-
 
     public PostUserRes createUser(PostUserReq postUserReq) throws BaseException {
         if(userProvider.checkEmail(postUserReq.getEmail()) ==1){
@@ -64,6 +61,14 @@ public class UserService {
                 throw new BaseException(MODIFY_FAIL_USERNAME);
             }
         } catch(Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public DeleteUserRes deleteUser(DeleteUserReq deleteUserReq) throws BaseException {
+        try {
+            return userDao.deleteUser(deleteUserReq);
+        } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }
     }

@@ -4,6 +4,7 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.user.model.*;
 import com.example.demo.utils.JwtService;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,13 +131,19 @@ public class UserController {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
-/*
-    @ResponseBody
-    @DeleteMapping("/{userIdx}") // (DELETE) localhost:9000/users/:userIdx
-    public BaseResponse<DeleteUserRes> deleteUserByIdx(@PathVariable("userIdx") int UserIdx) {
-        try {
 
+    @ResponseBody
+    @DeleteMapping("") // (DELETE) localhost:9000/users?userIdx=4
+    public BaseResponse<String> deleteUser(@RequestParam(required = true)int userIdx) {
+        try {
+            DeleteUserReq deleteUserReq = new DeleteUserReq(userIdx);
+            DeleteUserRes deleteUserRes = userService.deleteUser(deleteUserReq);
+            String result = "UserIdx = " + deleteUserRes.getUserIdx() + " 삭제";
+
+            return new BaseResponse<>(result);
+        } catch(BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
-*/
+
 }
