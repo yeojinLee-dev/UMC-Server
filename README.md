@@ -1,6 +1,3 @@
-# Spring Boot Template
-본 템플릿은 소프트스퀘어드 서버 교육용 Spring Boot 템플릿 입니다. (2021 ver.)
-
 ## ✨Common
 ### REST API
 REST API의 기본 구성 원리를 반드시 구글링하여 익힌 뒤에 Route를 구성하자.
