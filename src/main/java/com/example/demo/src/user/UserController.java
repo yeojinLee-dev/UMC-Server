@@ -4,7 +4,6 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.user.model.*;
 import com.example.demo.utils.JwtService;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,6 @@ public class UserController {
         this.jwtService = jwtService;
     }
 
-
-
     /**
      * 회원 조회 API
      * [GET] /users
@@ -64,8 +61,28 @@ public class UserController {
         }
     }
 
+    // 회원 피드 조회
     @ResponseBody
-    @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/users/:userIdx
+    @GetMapping("/{userIdx}")
+    public BaseResponse<GetUserFeedRes> getUserFeed(@PathVariable("userIdx") int userIdx){
+        try {
+             /* TODO: jwt는 다음주차에서 배울 내용입니다!
+            jwt에서 idx 추출.
+            int userIdxByJwt = jwtService.getUserIdx();
+            GetUserFeedRes getUserFeed=userProvider.retrieveUserFeed(userIdx,userIdxByJwt);
+               TODO: 우선 아래 코드로 진행해주세요!
+            */
+
+            GetUserFeedRes getUserFeed = userProvider.retrieveUserFeed(userIdx,userIdx);
+
+            return new BaseResponse<>(getUserFeed);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/{userIdx}/old") // (GET) 127.0.0.1:9000/users/:userIdx
     public BaseResponse<GetUserRes> getUserByIdx(@PathVariable("userIdx")int userIdx) {
         try{
             System.out.println("getUserByIdx");

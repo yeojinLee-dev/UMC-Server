@@ -1,8 +1,4 @@
-00:22:40.753 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level Å×½ºÆ®]- Warn Level Å×½ºÆ®
-00:22:40.788 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level Å×½ºÆ®]- ERROR Level Å×½ºÆ®
-09:16:02.697 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level Å×½ºÆ®]- Warn Level Å×½ºÆ®
-09:16:02.700 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level Å×½ºÆ®]- ERROR Level Å×½ºÆ®
-11:29:35.089 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level Å×½ºÆ®]- Warn Level Å×½ºÆ®
-11:29:35.093 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level Å×½ºÆ®]- ERROR Level Å×½ºÆ®
-12:05:16.366 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level Å×½ºÆ®]- Warn Level Å×½ºÆ®
-12:05:16.369 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level Å×½ºÆ®]- ERROR Level Å×½ºÆ®
+01:22:51.388 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level í…ŒìŠ¤íŠ¸]- Warn Level í…ŒìŠ¤íŠ¸
+01:22:51.394 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level í…ŒìŠ¤íŠ¸]- ERROR Level í…ŒìŠ¤íŠ¸
+01:46:43.844 WARN  [File:TestController.java] [Func:getAll] [Line:35] [Message:Warn Level í…ŒìŠ¤íŠ¸]- Warn Level í…ŒìŠ¤íŠ¸
+01:46:43.845 ERROR [File:TestController.java] [Func:getAll] [Line:38] [Message:ERROR Level í…ŒìŠ¤íŠ¸]- ERROR Level í…ŒìŠ¤íŠ¸
