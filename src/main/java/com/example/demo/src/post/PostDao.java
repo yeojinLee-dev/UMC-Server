@@ -1,7 +1,6 @@
 package com.example.demo.src.post;
 
-import com.example.demo.src.post.model.GetPostImgRes;
-import com.example.demo.src.post.model.GetPostsRes;
+import com.example.demo.src.post.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -84,6 +83,81 @@ public class PostDao {
                                 ,rs.getInt("postIdx"))),selectUserPostsParam);
 
 
+
+    }
+
+    // 게시글 확인
+    public int checkPostExist(int postIdx){
+        String checkPostExistQuery = "select exists(select postIdx from Post where postIdx = ?)";
+        int checkPostExistParams = postIdx;
+        return this.jdbcTemplate.queryForObject(checkPostExistQuery,
+                int.class,
+                checkPostExistParams);
+
+    }
+
+    // 게시글 작성
+    public int insertPost(int userIdx, PostPostReq postPostReq){
+        String insertPostQuery =
+                "        INSERT INTO Post(userIdx, content)\n" +
+                        "        VALUES (?, ?);";
+        Object[] insertPostParams = new Object[]{userIdx,postPostReq.getContent()};
+        this.jdbcTemplate.update(insertPostQuery, insertPostParams);
+
+        String lastInserIdQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
+
+    }
+
+    // 게시글 이미지 작성
+    public int insertPostImgs(int postIdx, PostImgsUrlReq postImgsUrlReq){
+        String insertPostImgQuery =
+                "        INSERT INTO PostImgUrl(postIdx, imgUrl)\n" +
+                        "        VALUES (?, ?);";
+        Object[] insertPostImgParams = new Object[]{postIdx,postImgsUrlReq.getImgUrl()};
+        this.jdbcTemplate.update(insertPostImgQuery, insertPostImgParams);
+
+        String lastInserIdQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
+    }
+
+    // 게시글  수정
+    public int updatePost(int postIdx, PatchPostReq patchPostReq){
+        String updatePostQuery = "UPDATE Post\n" +
+                "        SET content = ?\n" +
+                "        WHERE postIdx = ?" ;
+        Object[] updatePostParams = new Object[]{patchPostReq.getContent(), postIdx};
+
+        return this.jdbcTemplate.update(updatePostQuery,updatePostParams);
+    }
+
+    //게시글 삭제
+    public int updatePostStatus(int postIdx){
+        String deleteUserQuery = "UPDATE Post\n" +
+                "        SET status = 'INACTIVE'\n" +
+                "        WHERE postIdx = ? ";
+        Object[] deleteUserParams = new Object[]{postIdx};
+
+        return this.jdbcTemplate.update(deleteUserQuery,deleteUserParams);
+    }
+
+    // 회원 확인
+    public String checkUserStatus(String email){
+        String checkUserStatusQuery = "select status from User where email = ? ";
+        String checkUserStatusParams = email;
+        return this.jdbcTemplate.queryForObject(checkUserStatusQuery,
+                String.class,
+                checkUserStatusParams);
+
+    }
+
+    // 게시물, 유저 확인
+    public int checkUserPostExist(int userIdx, int postIdx){
+        String checkUserPostQuery = "select exists(select postIdx from Post where postIdx = ? and userIdx=?) ";
+        Object[]  checkUserPostParams = new Object[]{postIdx,userIdx};
+        return this.jdbcTemplate.queryForObject(checkUserPostQuery,
+                int.class,
+                checkUserPostParams);
 
     }
 }

@@ -54,5 +54,23 @@ public class PostProvider {
         }
     }
 
+    // 유저의 게시물인지 확인
+    public int checkUserPostExist(int userIdx,int postIdx) throws BaseException {
+        try{
+            return postDao.checkUserPostExist(userIdx,postIdx);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    // 게시물 확인
+    public int checkPostExist(int postIdx) throws BaseException{
+        try{
+            return postDao.checkPostExist(postIdx);
+        } catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
 
 }

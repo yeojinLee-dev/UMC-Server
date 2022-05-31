@@ -29,7 +29,11 @@ public enum BaseResponseStatus {
     POST_USERS_EMPTY_EMAIL(false, 2015, "이메일을 입력해주세요."),
     POST_USERS_INVALID_EMAIL(false, 2016, "이메일 형식을 확인해주세요."),
     POST_USERS_EXISTS_EMAIL(false,2017,"중복된 이메일입니다."),
-
+    POST_POSTS_INVALID_CONTENTS(false, 2018, "내용의 글자 수를 확인해주세요."),
+    POST_POSTS_EMPTY_IMGURL(false, 2019, "게시물의 이미지를 확인해주세요."),
+    POST_POSTS_EMPTY_CONTENTS(false, 2020, "게시물의 내용을 작성해주세요."),
+    POSTS_EMPTY_POST_ID(false, 2021, "게시물 아이디 값을 확인해주세요."),
+    POSTS_EMPTY_USER_POST(false, 2022, "게시글의 유저 아이디 값이 비어있습니다."),
 
 
     /**
@@ -42,7 +46,8 @@ public enum BaseResponseStatus {
     DUPLICATED_EMAIL(false, 3013, "중복된 이메일입니다."),
     FAILED_TO_LOGIN(false,3014,"없는 아이디거나 비밀번호가 틀렸습니다."),
 
-
+    MODIFY_FAIL_POST(false, 3015, "게시글 수정에 실패하였습니다."),
+    DELETE_FAIL_POST(false, 3016, "게시글 삭제에 실패하였습니다."),
 
     /**
      * 4000 : Database, Server 오류
