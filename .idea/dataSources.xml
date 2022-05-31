@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="yeojinDB@yeojindb.cwgofftlsnoq.ap-northeast-2.rds.amazonaws.com" uuid="e4439457-c5cd-408a-97c3-756196f36848">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://yeojindb.cwgofftlsnoq.ap-northeast-2.rds.amazonaws.com/yeojinDB</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
