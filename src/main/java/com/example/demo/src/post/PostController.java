@@ -21,14 +21,14 @@ public class PostController {
 
     @Autowired
     private final PostService postService;
-/*
+
     @Autowired
     private final JwtService jwtService;
-*/
-    public PostController(PostProvider postProvider, PostService postService){
+
+    public PostController(PostProvider postProvider, PostService postService, JwtService jwtService) {
         this.postProvider = postProvider;
         this.postService = postService;
-        //this.jwtService = jwtService;
+        this.jwtService = jwtService;
     }
 
     @ResponseBody
@@ -48,6 +48,7 @@ public class PostController {
     @ResponseBody
     @PostMapping("")
     public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) {
+
         if(postPostReq.getContent() == null){
             return new BaseResponse<>(POST_POSTS_EMPTY_CONTENTS);
         }
@@ -59,7 +60,10 @@ public class PostController {
         }
 
         try{
-            //int userIdxByJwt = jwtService.getUserIdx();
+            int userIdxByJwt = jwtService.getUserIdx();
+            if (postPostReq.getUserIdx() != userIdxByJwt) {
+                return new BaseResponse<>(INVALID_JWT);
+            }
             PostPostRes postPostRes = postService.createPost(postPostReq.getUserIdx(), postPostReq);
             return new BaseResponse<>(postPostRes);
         } catch(BaseException exception){

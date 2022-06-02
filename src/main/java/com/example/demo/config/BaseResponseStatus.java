@@ -35,6 +35,8 @@ public enum BaseResponseStatus {
     POSTS_EMPTY_POST_ID(false, 2021, "게시물 아이디 값을 확인해주세요."),
     POSTS_EMPTY_USER_POST(false, 2022, "게시글의 유저 아이디 값이 비어있습니다."),
 
+    POST_USERS_EMPTY_PASSWORD(false, 2030, "이메일을 입력해주세요."),
+    POST_USERS_INVALID_PASSWORD(false, 2031, "이메일 형식을 확인해주세요."),
 
     /**
      * 3000 : Response 오류
